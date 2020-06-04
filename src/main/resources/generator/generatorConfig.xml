@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!--配置文件的位置-->
+    <properties resource="generator/generator.properties" />
+    <!--额外工具包的位置-->
+    <!-- 需要定义自己本地的 数据库连接jar 位置-->
+    <classPathEntry location="${database.driver.location}"/>
+    <context id="default" targetRuntime="MyBatis3">
+        <!-- 生成的pojo，将implements Serializable,为生成的Java模型类添加序列化接口-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!--生成mapper.xml时覆盖原文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <commentGenerator>
+            <!-- 是否取消注释 -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- 是否去除时间戳 -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <jdbcConnection
+                driverClass="${dataSource.driver}"
+                connectionURL="${dataSource.URL}"
+                userId="${dataSource.user}"
+                password="${dataSource.password}"/>
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--配置实体所在的路径 ,和项目所在的路径-->
+        <javaModelGenerator targetProject="${target.project}" targetPackage="${target.javaModel.package}">
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--配置 生成mapper.xml 文件所在的路径和 项目所在的路径-->
+        <sqlMapGenerator  targetProject="${target.project.xml}" targetPackage="${target.sqlMapper.package}">
+        </sqlMapGenerator>
+        <!--配置 生成的mapper接口 文件所在的路径和项目所在的路径-->
+        <javaClientGenerator type="XMLMAPPER" targetProject="${target.project}" targetPackage="${target.javaClient.package}">
+        </javaClientGenerator>
+        <!--数据库约束,表名,生成的pojo名称-->
+        <table schema="${table.schema}" tableName="${table.tableName}"
+               domainObjectName="${table.domainObjectName}"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true">
+        </table>
+    </context>
+</generatorConfiguration>
