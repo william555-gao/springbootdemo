@@ -11,6 +11,7 @@ import java.net.UnknownHostException;
 @SpringBootApplication
 public class CJYApplication {
 
+
     public static void main(String[] args) {
         SpringApplication.run(CJYApplication.class, args);
     }
