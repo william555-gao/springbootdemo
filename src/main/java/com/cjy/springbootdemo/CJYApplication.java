@@ -16,6 +16,7 @@ public class CJYApplication {
         SpringApplication.run(CJYApplication.class, args);
     }
 
+
     /**
      * 获得本机的内网地址（String）
      */
