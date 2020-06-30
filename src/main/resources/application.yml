@@ -18,8 +18,8 @@ jdbc:
     username: root
     password: root1234
 mybatis:
-  typealiasespackage: com.cjy.springbootdemo.entity
-  mapperlocations: classpath*:com/cjy/springbootdemo/mapper/*.xml
+  typealiasespackage: com.springbootdemo.entity
+  mapperlocations: classpath*:com/springbootdemo/mapper/*.xml
   configlocation: classpath:/mybatis-config.xml
 
 
