@@ -10,8 +10,8 @@
         <!-- %logger{36} 表示 Logger 名字最长36个字符 -->
         <property name="LOG_PATTERN" value="IP:${sys:local-ip} %date{yyyy-MM-dd HH:mm:ss.SSS} [%T %t] %-5level pojo:%C method:%M linenum:%L{60} - %msg%n" />
         <!-- 定义日志存储的路径 -->
-        <property name="FILE_PATH" value="/cjy/opt/app" />
-        <property name="FILE_NAME" value="cjy_springbootdemo" />
+        <property name="FILE_PATH" value="/springbootdemo/opt/app" />
+        <property name="FILE_NAME" value="springbootdemo" />
     </Properties>
 
     <appenders>
@@ -77,7 +77,10 @@
     <loggers>
 
         <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
-        <logger name="org.mybatis" level="DEBUG" additivity="false">
+       <!-- <logger name="org.mybatis" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+        </logger>-->
+        <logger name="com.springbootdemo.mapper" additivity="false" level="DEBUG">
             <AppenderRef ref="Console"/>
         </logger>
         <!--监控系统信息-->
@@ -86,7 +89,7 @@
             <AppenderRef ref="Console"/>
         </Logger>
 
-        <root level="info">
+        <root level="DEBUG">
             <appender-ref ref="Console"/>
             <appender-ref ref="Filelog"/>
             <appender-ref ref="RollingFileInfo"/>

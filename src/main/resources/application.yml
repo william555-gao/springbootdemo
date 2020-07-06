@@ -1,6 +1,8 @@
 #端口号
 server:
   port: 8088
+  servlet:
+    context-path: /springbootdemo
 spring:
   mvc:
     view:
@@ -12,15 +14,21 @@ spring:
 spring:
   profiles: development
 
-jdbc:
-    driverclassname: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cjylocaldatabase?useUnicode=true&characterEncoding=UTF-8
+  #jdbc
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cjylocaldatabase?useUnicode=true&characterEncoding-UTF-8
     username: root
     password: root1234
+    type: com.alibaba.druid.pool.DruidDataSource
+
 mybatis:
-  typealiasespackage: com.springbootdemo.entity
-  mapperlocations: classpath*:com/springbootdemo/mapper/*.xml
-  configlocation: classpath:/mybatis-config.xml
+  type-aliases-package: com.springbootdemo.entity
+  mapper-locations: classpath*:com/springbootdemo/mapper/*.xml
+  config-location: classpath:/mybatis-config.xml
+
+
+
 
 
 ---

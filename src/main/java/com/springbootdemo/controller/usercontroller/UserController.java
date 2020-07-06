@@ -22,7 +22,7 @@ import javax.annotation.Resource;
 
 @RestController
 @Log4j2
-@RequestMapping(value = "/cjy/usermanage")
+@RequestMapping(value = "/usermanage")
 public class UserController {
 
     @Resource
